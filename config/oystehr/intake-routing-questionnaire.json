@@ -1,0 +1,144 @@
+{
+  "schema-version": "2025-09-25",
+  "fhirResources": {
+    "questionnaire-intake-routing": {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "url": "https://ottehr.com/FHIR/Questionnaire/intake-routing",
+        "version": "1.0.0",
+        "name": "intake_routing",
+        "title": "Intake Routing Questionnaire",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "visit-type",
+            "text": "What brings you in today?",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+              {
+                "valueString": "Personal Injury",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/requires-cms1500",
+                    "valueBoolean": true
+                  }
+                ]
+              },
+              {
+                "valueString": "Workers' Compensation",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/requires-cms1500",
+                    "valueBoolean": true
+                  }
+                ]
+              },
+              {
+                "valueString": "General Health & Wellness"
+              }
+            ],
+            "extension": [
+              {
+                "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                "valueString": "PatientRecord.medicalContext.visit_type"
+              }
+            ]
+          },
+          {
+            "linkId": "treatment-type",
+            "text": "What type of care are you seeking?",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+              {
+                "valueString": "Chiropractic"
+              },
+              {
+                "valueString": "Pain Management"
+              },
+              {
+                "valueString": "Consultation"
+              }
+            ],
+            "enableWhen": [
+              {
+                "question": "visit-type",
+                "operator": "=",
+                "answerString": "General Health & Wellness"
+              }
+            ],
+            "extension": [
+              {
+                "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                "valueString": "PatientRecord.medicalContext.treatment_type"
+              }
+            ]
+          },
+          {
+            "linkId": "payment-method",
+            "text": "How will you be paying for today's visit?",
+            "type": "choice",
+            "required": true,
+            "answerOption": [
+              {
+                "valueString": "My health insurance",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/payment-method-code",
+                    "valueString": "traditional-insurance"
+                  }
+                ]
+              },
+              {
+                "valueString": "Cash or self-pay",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/payment-method-code",
+                    "valueString": "cash-pay"
+                  }
+                ]
+              },
+              {
+                "valueString": "I was referred by my attorney",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/payment-method-code",
+                    "valueString": "attorney-lop"
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/requires-lop-tracking",
+                    "valueBoolean": true
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/requires-cms1500",
+                    "valueBoolean": true
+                  }
+                ]
+              },
+              {
+                "valueString": "My employer's workers' compensation insurance",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/payment-method-code",
+                    "valueString": "workers-comp-carrier"
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/requires-cms1500",
+                    "valueBoolean": true
+                  }
+                ]
+              }
+            ],
+            "extension": [
+              {
+                "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                "valueString": "PatientRecord.medicalContext.payment_method"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

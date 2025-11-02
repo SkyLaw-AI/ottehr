@@ -1,0 +1,167 @@
+{
+  "schema-version": "2025-09-25",
+  "fhirResources": {
+    "questionnaire-quick-follow-up-insured": {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "url": "https://ottehr.com/FHIR/Questionnaire/quick-follow-up-insured",
+        "version": "1.0.0",
+        "name": "quick_follow_up_insured",
+        "title": "Quick Follow-Up (Insured)",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "previous-symptoms-display",
+            "text": "Your Last Visit Summary",
+            "type": "display",
+            "extension": [
+              {
+                "url": "https://fhir.zapehr.com/r4/StructureDefinitions/dynamic-content",
+                "valueString": "previous-symptoms-summary"
+              }
+            ]
+          },
+          {
+            "linkId": "insurance-verification-section",
+            "text": "Insurance Verification",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "insurance-display",
+                "text": "Current Insurance Coverage",
+                "type": "display",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/dynamic-content",
+                    "valueString": "insurance-coverage-summary"
+                  }
+                ]
+              },
+              {
+                "linkId": "authorization-number",
+                "text": "Authorization number (if required)",
+                "type": "string",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "current-symptoms-section",
+            "text": "Current Symptoms",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "current-pain-regions",
+                "text": "Where are you experiencing pain today?",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-severity-per-region",
+                "text": "Pain severity (0 = no pain, 10 = worst pain imaginable)",
+                "type": "integer",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/min-value",
+                    "valueInteger": 0
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/max-value",
+                    "valueInteger": 10
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "changes-section",
+            "text": "Changes Since Last Visit",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "changes-description",
+                "text": "What's better, worse, or the same since your last visit?",
+                "type": "text",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "medications-section",
+            "text": "Current Medications",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "current-medications",
+                "text": "Are you currently taking any medications?",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "medications-changed",
+                "text": "Have your medications changed since your last visit?",
+                "type": "boolean",
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
