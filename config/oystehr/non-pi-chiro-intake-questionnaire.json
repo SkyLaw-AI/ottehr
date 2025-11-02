@@ -1,0 +1,174 @@
+{
+  "schema-version": "2025-09-25",
+  "fhirResources": {
+    "questionnaire-non-pi-chiro-intake": {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "url": "https://ottehr.com/FHIR/Questionnaire/non-pi-chiro-intake",
+        "version": "1.0.0",
+        "name": "non_pi_chiro_intake",
+        "title": "Non-PI Chiropractic Intake",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "pi-check",
+            "text": "Is this visit related to a personal injury case?",
+            "type": "boolean",
+            "required": true,
+            "extension": [
+              {
+                "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                "valueString": "PatientRecord.medicalContext.is_personal_injury"
+              }
+            ]
+          },
+          {
+            "linkId": "current-symptoms-section",
+            "text": "Current Symptoms",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "pain-regions",
+                "text": "Where are you experiencing pain or discomfort?",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-severity",
+                "text": "Pain severity (0 = no pain, 10 = worst pain imaginable)",
+                "type": "integer",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/min-value",
+                    "valueInteger": 0
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/max-value",
+                    "valueInteger": 10
+                  }
+                ]
+              },
+              {
+                "linkId": "symptom-description",
+                "text": "Please describe your symptoms",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "symptom-onset",
+                "text": "When did your symptoms begin?",
+                "type": "date",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "medical-history-section",
+            "text": "Medical History",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "current-medications",
+                "text": "Current medications",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "allergies",
+                "text": "Allergies",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "previous-chiropractic-care",
+                "text": "Have you received chiropractic care before?",
+                "type": "boolean",
+                "required": false
+              },
+              {
+                "linkId": "previous-treatments",
+                "text": "What other treatments have you tried?",
+                "type": "text",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "functional-impact-section",
+            "text": "Functional Impact",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "activities-limited",
+                "text": "Are there any activities that are limited by your condition?",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "work-impact",
+                "text": "How has this affected your ability to work?",
+                "type": "text",
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

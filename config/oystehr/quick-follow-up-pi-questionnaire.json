@@ -1,0 +1,209 @@
+{
+  "schema-version": "2025-09-25",
+  "fhirResources": {
+    "questionnaire-quick-follow-up-pi": {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "url": "https://ottehr.com/FHIR/Questionnaire/quick-follow-up-pi",
+        "version": "1.0.0",
+        "name": "quick_follow_up_pi",
+        "title": "Quick Follow-Up (Personal Injury)",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "previous-symptoms-display",
+            "text": "Your Last Visit Summary",
+            "type": "display",
+            "extension": [
+              {
+                "url": "https://fhir.zapehr.com/r4/StructureDefinitions/dynamic-content",
+                "valueString": "previous-symptoms-summary"
+              }
+            ]
+          },
+          {
+            "linkId": "attorney-case-info-section",
+            "text": "Attorney & Case Information",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "attorney-info-display",
+                "text": "Attorney Information",
+                "type": "display",
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/dynamic-content",
+                    "valueString": "attorney-case-summary"
+                  }
+                ]
+              },
+              {
+                "linkId": "case-status",
+                "text": "Case status",
+                "type": "choice",
+                "required": false,
+                "answerOption": [
+                  {
+                    "valueString": "Active"
+                  },
+                  {
+                    "valueString": "Settled"
+                  },
+                  {
+                    "valueString": "Pending"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.legalContext.case_status"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "current-symptoms-section",
+            "text": "Current Symptoms",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "current-pain-regions",
+                "text": "Where are you experiencing pain today?",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/icd10-suggestions",
+                    "valueBoolean": true
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-severity-per-region",
+                "text": "Pain severity (0 = no pain, 10 = worst pain imaginable)",
+                "type": "integer",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/min-value",
+                    "valueInteger": 0
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/max-value",
+                    "valueInteger": 10
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "progress-section",
+            "text": "Treatment Progress",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "progress-notes",
+                "text": "How has treatment helped?",
+                "type": "text",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.medicalContext.treatment_progress_notes"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "new-injuries-section",
+            "text": "New Injuries or Complications",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "new-injuries",
+                "text": "Have you experienced any new injuries or complications?",
+                "type": "boolean",
+                "required": false
+              },
+              {
+                "linkId": "new-injuries-details",
+                "text": "If yes, please provide details",
+                "type": "text",
+                "required": false,
+                "enableWhen": [
+                  {
+                    "question": "new-injuries",
+                    "operator": "=",
+                    "answerBoolean": true
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.medicalContext.new_injuries_details"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

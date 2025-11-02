@@ -1,0 +1,295 @@
+{
+  "schema-version": "2025-09-25",
+  "fhirResources": {
+    "questionnaire-personal-injury-intake": {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "url": "https://ottehr.com/FHIR/Questionnaire/personal-injury-intake",
+        "version": "1.0.0",
+        "name": "personal_injury_intake",
+        "title": "Personal Injury Intake",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "attorney-section",
+            "text": "Attorney & Case Information",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "attorney-name",
+                "text": "Attorney name",
+                "type": "string",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.legalContext.lop_details.responsible_attorney"
+                  }
+                ]
+              },
+              {
+                "linkId": "law-firm",
+                "text": "Law firm",
+                "type": "string",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.legalContext.lop_details.law_firm"
+                  }
+                ]
+              },
+              {
+                "linkId": "lop-signed-date",
+                "text": "LOP signed date",
+                "type": "date",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.legalContext.lop_details.lop_signed_date"
+                  }
+                ]
+              },
+              {
+                "linkId": "case-status",
+                "text": "Case status",
+                "type": "choice",
+                "required": false,
+                "answerOption": [
+                  {
+                    "valueString": "Active"
+                  },
+                  {
+                    "valueString": "Settled"
+                  },
+                  {
+                    "valueString": "Pending"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.legalContext.case_status"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "incident-details-section",
+            "text": "Incident Details",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "date-of-incident",
+                "text": "Date of incident",
+                "type": "date",
+                "required": true
+              },
+              {
+                "linkId": "how-incident-occurred",
+                "text": "How did the incident occur? (Please provide a detailed narrative)",
+                "type": "text",
+                "required": true
+              },
+              {
+                "linkId": "body-regions-affected",
+                "text": "Body regions affected",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/icd10-suggestions",
+                    "valueBoolean": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "current-symptoms-section",
+            "text": "Current Symptoms",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "pain-regions",
+                "text": "Where are you experiencing pain today?",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-severity",
+                "text": "Pain severity (0 = no pain, 10 = worst pain imaginable)",
+                "type": "integer",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/min-value",
+                    "valueInteger": 0
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/max-value",
+                    "valueInteger": 10
+                  }
+                ]
+              },
+              {
+                "linkId": "symptom-description",
+                "text": "Please describe your symptoms in detail",
+                "type": "text",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "medical-history-section",
+            "text": "Medical History",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "current-medications",
+                "text": "Current medications",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "allergies",
+                "text": "Allergies",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "previous-injuries",
+                "text": "Have you had previous injuries to these areas?",
+                "type": "boolean",
+                "required": false
+              },
+              {
+                "linkId": "previous-injuries-details",
+                "text": "If yes, please describe",
+                "type": "text",
+                "required": false,
+                "enableWhen": [
+                  {
+                    "question": "previous-injuries",
+                    "operator": "=",
+                    "answerBoolean": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

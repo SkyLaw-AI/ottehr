@@ -1,0 +1,381 @@
+{
+  "schema-version": "2025-09-25",
+  "fhirResources": {
+    "questionnaire-pain-management-intake": {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "url": "https://ottehr.com/FHIR/Questionnaire/pain-management-intake",
+        "version": "1.0.0",
+        "name": "pain_management_intake",
+        "title": "Pain Management Intake",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "pain-assessment-section",
+            "text": "Pain Assessment",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "pain-locations",
+                "text": "Where is your pain located?",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/icd10-suggestions",
+                    "valueBoolean": true
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-intensity",
+                "text": "Current pain intensity (0 = no pain, 10 = worst pain imaginable)",
+                "type": "integer",
+                "required": true,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/min-value",
+                    "valueInteger": 0
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/max-value",
+                    "valueInteger": 10
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-quality",
+                "text": "How would you describe your pain?",
+                "type": "choice",
+                "required": false,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Sharp"
+                  },
+                  {
+                    "valueString": "Dull"
+                  },
+                  {
+                    "valueString": "Aching"
+                  },
+                  {
+                    "valueString": "Burning"
+                  },
+                  {
+                    "valueString": "Throbbing"
+                  },
+                  {
+                    "valueString": "Stabbing"
+                  },
+                  {
+                    "valueString": "Radiating"
+                  },
+                  {
+                    "valueString": "Numbness"
+                  },
+                  {
+                    "valueString": "Tingling"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-pattern",
+                "text": "Pain pattern",
+                "type": "choice",
+                "required": false,
+                "answerOption": [
+                  {
+                    "valueString": "Constant"
+                  },
+                  {
+                    "valueString": "Intermittent"
+                  },
+                  {
+                    "valueString": "Worse in morning"
+                  },
+                  {
+                    "valueString": "Worse in evening"
+                  },
+                  {
+                    "valueString": "Worse with activity"
+                  },
+                  {
+                    "valueString": "Worse with rest"
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-duration",
+                "text": "How long have you been experiencing this pain?",
+                "type": "choice",
+                "required": false,
+                "answerOption": [
+                  {
+                    "valueString": "Less than 1 week"
+                  },
+                  {
+                    "valueString": "1-4 weeks"
+                  },
+                  {
+                    "valueString": "1-3 months"
+                  },
+                  {
+                    "valueString": "3-6 months"
+                  },
+                  {
+                    "valueString": "6-12 months"
+                  },
+                  {
+                    "valueString": "More than 1 year"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "medical-history-section",
+            "text": "Medical History",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "previous-treatments",
+                "text": "What treatments have you tried for this pain?",
+                "type": "choice",
+                "required": false,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Physical therapy"
+                  },
+                  {
+                    "valueString": "Chiropractic care"
+                  },
+                  {
+                    "valueString": "Massage therapy"
+                  },
+                  {
+                    "valueString": "Acupuncture"
+                  },
+                  {
+                    "valueString": "Pain medications"
+                  },
+                  {
+                    "valueString": "Injections"
+                  },
+                  {
+                    "valueString": "Surgery"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ]
+              },
+              {
+                "linkId": "current-medications",
+                "text": "Current medications (please list all medications, dosages, and frequency)",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "allergies",
+                "text": "Allergies (medications, foods, environmental)",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "surgeries",
+                "text": "Previous surgeries (please list type and date)",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "medical-conditions",
+                "text": "Other medical conditions",
+                "type": "text",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "functional-impact-section",
+            "text": "Functional Impact",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "adl-impact",
+                "text": "How does your pain affect your daily activities?",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "work-impact",
+                "text": "How does your pain affect your ability to work?",
+                "type": "choice",
+                "required": false,
+                "answerOption": [
+                  {
+                    "valueString": "No impact"
+                  },
+                  {
+                    "valueString": "Mild impact"
+                  },
+                  {
+                    "valueString": "Moderate impact"
+                  },
+                  {
+                    "valueString": "Severe impact"
+                  },
+                  {
+                    "valueString": "Unable to work"
+                  }
+                ]
+              },
+              {
+                "linkId": "sleep-impact",
+                "text": "How does your pain affect your sleep?",
+                "type": "choice",
+                "required": false,
+                "answerOption": [
+                  {
+                    "valueString": "No impact"
+                  },
+                  {
+                    "valueString": "Difficulty falling asleep"
+                  },
+                  {
+                    "valueString": "Difficulty staying asleep"
+                  },
+                  {
+                    "valueString": "Wakes me up at night"
+                  },
+                  {
+                    "valueString": "No sleep due to pain"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "pain-management-goals-section",
+            "text": "Pain Management Goals",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "treatment-goals",
+                "text": "What are your goals for pain management?",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "desired-pain-level",
+                "text": "What pain level would be acceptable for you? (0-10)",
+                "type": "integer",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/min-value",
+                    "valueInteger": 0
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/max-value",
+                    "valueInteger": 10
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "injection-history-section",
+            "text": "Injection History & Preferences",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "previous-injections",
+                "text": "Have you had injections for pain management before?",
+                "type": "boolean",
+                "required": false
+              },
+              {
+                "linkId": "injection-details",
+                "text": "If yes, please describe (type, location, dates, effectiveness)",
+                "type": "text",
+                "required": false,
+                "enableWhen": [
+                  {
+                    "question": "previous-injections",
+                    "operator": "=",
+                    "answerBoolean": true
+                  }
+                ]
+              },
+              {
+                "linkId": "injection-preferences",
+                "text": "Do you have any preferences or concerns about injections?",
+                "type": "text",
+                "required": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,442 @@
+{
+  "schema-version": "2025-09-25",
+  "fhirResources": {
+    "questionnaire-workers-comp-intake": {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "url": "https://ottehr.com/FHIR/Questionnaire/workers-comp-intake",
+        "version": "1.0.0",
+        "name": "workers_comp_intake",
+        "title": "Workers' Compensation Intake",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "employer-information-section",
+            "text": "Employer Information",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "employer-name",
+                "text": "Employer name",
+                "type": "string",
+                "required": true,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.employer_name"
+                  }
+                ]
+              },
+              {
+                "linkId": "employer-address",
+                "text": "Employer address",
+                "type": "group",
+                "item": [
+                  {
+                    "linkId": "employer-street-address",
+                    "text": "Street address",
+                    "type": "string",
+                    "required": true,
+                    "extension": [
+                      {
+                        "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                        "valueString": "PatientRecord.workersCompContext.employer_address.line"
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "employer-city",
+                    "text": "City",
+                    "type": "string",
+                    "required": true,
+                    "extension": [
+                      {
+                        "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                        "valueString": "PatientRecord.workersCompContext.employer_address.city"
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "employer-state",
+                    "text": "State",
+                    "type": "string",
+                    "required": true,
+                    "extension": [
+                      {
+                        "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                        "valueString": "PatientRecord.workersCompContext.employer_address.state"
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "employer-zip",
+                    "text": "ZIP code",
+                    "type": "string",
+                    "required": true,
+                    "extension": [
+                      {
+                        "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                        "valueString": "PatientRecord.workersCompContext.employer_address.postalCode"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "linkId": "supervisor-name",
+                "text": "Supervisor name",
+                "type": "string",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.supervisor_name"
+                  }
+                ]
+              },
+              {
+                "linkId": "date-of-injury",
+                "text": "Date of injury",
+                "type": "date",
+                "required": true,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.date_of_injury"
+                  }
+                ]
+              },
+              {
+                "linkId": "time-of-injury",
+                "text": "Time of injury",
+                "type": "time",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.time_of_injury"
+                  }
+                ]
+              },
+              {
+                "linkId": "claim-number",
+                "text": "Claim number (if available)",
+                "type": "string",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.claim_number"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "injury-details-section",
+            "text": "Injury Details",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "how-injury-occurred",
+                "text": "How did the injury occur? (Please provide a detailed narrative)",
+                "type": "text",
+                "required": true,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.injury_narrative"
+                  }
+                ]
+              },
+              {
+                "linkId": "body-regions-affected",
+                "text": "Body regions affected",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.body_regions_affected"
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/icd10-suggestions",
+                    "valueBoolean": true
+                  }
+                ]
+              },
+              {
+                "linkId": "witnesses-section",
+                "text": "Witnesses",
+                "type": "group",
+                "repeats": true,
+                "item": [
+                  {
+                    "linkId": "witness-name",
+                    "text": "Witness name",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "linkId": "witness-contact",
+                    "text": "Witness contact information",
+                    "type": "string",
+                    "required": false
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.witnesses"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "linkId": "medical-history-section",
+            "text": "Medical History (Abbreviated)",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "previous-work-injuries",
+                "text": "Have you had previous work-related injuries?",
+                "type": "boolean",
+                "required": false
+              },
+              {
+                "linkId": "previous-work-injuries-details",
+                "text": "If yes, please describe",
+                "type": "text",
+                "required": false,
+                "enableWhen": [
+                  {
+                    "question": "previous-work-injuries",
+                    "operator": "=",
+                    "answerBoolean": true
+                  }
+                ]
+              },
+              {
+                "linkId": "current-medications",
+                "text": "Current medications",
+                "type": "text",
+                "required": false
+              },
+              {
+                "linkId": "allergies",
+                "text": "Allergies",
+                "type": "text",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "current-symptoms-section",
+            "text": "Current Symptoms",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "pain-regions",
+                "text": "Where are you experiencing pain?",
+                "type": "choice",
+                "required": true,
+                "repeats": true,
+                "answerOption": [
+                  {
+                    "valueString": "Head"
+                  },
+                  {
+                    "valueString": "Neck"
+                  },
+                  {
+                    "valueString": "Upper Back"
+                  },
+                  {
+                    "valueString": "Lower Back"
+                  },
+                  {
+                    "valueString": "Left Shoulder"
+                  },
+                  {
+                    "valueString": "Right Shoulder"
+                  },
+                  {
+                    "valueString": "Left Arm"
+                  },
+                  {
+                    "valueString": "Right Arm"
+                  },
+                  {
+                    "valueString": "Left Hand"
+                  },
+                  {
+                    "valueString": "Right Hand"
+                  },
+                  {
+                    "valueString": "Left Hip"
+                  },
+                  {
+                    "valueString": "Right Hip"
+                  },
+                  {
+                    "valueString": "Left Leg"
+                  },
+                  {
+                    "valueString": "Right Leg"
+                  },
+                  {
+                    "valueString": "Left Foot"
+                  },
+                  {
+                    "valueString": "Right Foot"
+                  },
+                  {
+                    "valueString": "Other"
+                  }
+                ]
+              },
+              {
+                "linkId": "pain-severity",
+                "text": "Pain severity (0 = no pain, 10 = worst pain imaginable)",
+                "type": "integer",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/min-value",
+                    "valueInteger": 0
+                  },
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/max-value",
+                    "valueInteger": 10
+                  }
+                ]
+              },
+              {
+                "linkId": "symptom-description",
+                "text": "Please describe your symptoms",
+                "type": "text",
+                "required": false
+              }
+            ]
+          },
+          {
+            "linkId": "work-status-section",
+            "text": "Work Status",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "currently-working",
+                "text": "Are you currently working?",
+                "type": "choice",
+                "required": true,
+                "answerOption": [
+                  {
+                    "valueString": "Yes, full duty"
+                  },
+                  {
+                    "valueString": "Yes, modified duty"
+                  },
+                  {
+                    "valueString": "No"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.work_status"
+                  }
+                ]
+              },
+              {
+                "linkId": "date-work-stopped",
+                "text": "Date work stopped (if applicable)",
+                "type": "date",
+                "required": false,
+                "enableWhen": [
+                  {
+                    "question": "currently-working",
+                    "operator": "=",
+                    "answerString": "No"
+                  }
+                ],
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.date_work_stopped"
+                  }
+                ]
+              },
+              {
+                "linkId": "restrictions-needed",
+                "text": "What work restrictions are needed?",
+                "type": "text",
+                "required": false,
+                "extension": [
+                  {
+                    "url": "https://fhir.zapehr.com/r4/StructureDefinitions/canonical-path",
+                    "valueString": "PatientRecord.workersCompContext.restrictions_needed"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
